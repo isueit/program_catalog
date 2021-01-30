@@ -1,0 +1,12 @@
+{
+    "name": "isueit/program_catalog",
+    "type": "drupal-custom-module",
+    "description": "Module to handle Programs in the Program Catalog",
+    "repositories": {
+        "type": "git",
+        "url": "git@github.com:isueit/program_catalog.git"
+    },
+    "require" : {
+        "drupal/pathauto": "^1.3"
+    }
+}

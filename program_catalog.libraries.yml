@@ -1,0 +1,11 @@
+programs:
+  version: 1.x
+  css:
+    layout:
+      css/programs.css: {}
+
+programs-search:
+  version: 1.x
+  css:
+    layout:
+      css/programs-search.css: {}
