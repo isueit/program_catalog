@@ -7,7 +7,6 @@ use \Drupal\taxonomy\Entity\Term;
 * Implements hook_rebuild().
 */
 function program_catalog_rebuild() {
-  \Drupal::logger('blah')->info('I am here');
   program_catalog_handle_feed();
 }
 
@@ -22,7 +21,6 @@ function program_catalog_cron() {
  * Pull in the feed
  */
 function program_catalog_handle_feed() {
-  \Drupal::logger('blah')->info('I am here');
   // Get all Staff Profile nodes
   $nids = \Drupal::entityQuery('node')->condition('type', 'programs')->execute();
   $nodes =  Node::loadMultiple($nids);
