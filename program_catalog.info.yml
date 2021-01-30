@@ -1,0 +1,9 @@
+name: 'Program Catalog'
+type: module
+core: 8.x
+description: 'Handle Programs in the Program Catalog'
+version: '8.x-1.1-dev'
+package: 'ISUEO'
+dependencies:
+  - pathauto:pathauto
+  - drupal:link

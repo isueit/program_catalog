@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Critical Issue'
+vid: critical_issue
+description: ''
+weight: 0
