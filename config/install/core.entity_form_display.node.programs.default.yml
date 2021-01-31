@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.programs.field_category
     - field.field.node.programs.field_critical_issue
     - field.field.node.programs.field_event_title_filter
+    - field.field.node.programs.field_interest_areas
     - field.field.node.programs.field_mydata_id
     - field.field.node.programs.field_program_area
     - field.field.node.programs.field_stale
@@ -39,23 +40,15 @@ content:
     third_party_settings: {  }
   field_category:
     weight: 125
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_critical_issue:
     weight: 122
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_event_title_filter:
     weight: 128
@@ -64,6 +57,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_interest_areas:
+    weight: 130
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_mydata_id:
     weight: 123
@@ -75,13 +74,9 @@ content:
     region: content
   field_program_area:
     weight: 126
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_stale:
     weight: 127
@@ -157,7 +152,7 @@ content:
     third_party_settings: {  }
   url_redirects:
     weight: 50
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden: {  }

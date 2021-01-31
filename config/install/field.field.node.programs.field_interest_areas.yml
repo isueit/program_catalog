@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_critical_issue
+    - field.storage.node.field_interest_areas
     - node.type.programs
-    - taxonomy.vocabulary.critical_issue
-id: node.programs.field_critical_issue
-field_name: field_critical_issue
+    - taxonomy.vocabulary.interest_areas
+id: node.programs.field_interest_areas
+field_name: field_interest_areas
 entity_type: node
 bundle: programs
-label: 'Critical Issue'
+label: 'Interest Areas'
 description: ''
 required: false
 translatable: false
@@ -19,7 +19,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      critical_issue: critical_issue
+      interest_areas: interest_areas
     sort:
       field: name
       direction: asc

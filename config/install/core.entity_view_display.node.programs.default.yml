@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.programs.field_category
     - field.field.node.programs.field_critical_issue
     - field.field.node.programs.field_event_title_filter
+    - field.field.node.programs.field_interest_areas
     - field.field.node.programs.field_mydata_id
     - field.field.node.programs.field_program_area
     - field.field.node.programs.field_stale
@@ -50,6 +51,16 @@ content:
     third_party_settings:
       field_formatter_class:
         class: program-meta
+  field_interest_areas:
+    weight: 5
+    label: above
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: program-meta
+    type: entity_reference_label
+    region: content
   field_program_area:
     type: entity_reference_label
     weight: 2
@@ -74,12 +85,8 @@ content:
         class: program-link
     type: link
     region: content
-  links:
-    weight: 5
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   field_event_title_filter: true
   field_mydata_id: true
   field_stale: true
+  links: true

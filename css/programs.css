@@ -1,4 +1,5 @@
 footer.isu-submitted-by_card {display: none !important;}
-div.program-meta {margin-top:10px; border:solid 1px #f5f5f5; display:inline-block; margin:20px 10px 0 0; padding:5px 5px 0 2px; font-size:0.8em;}
+div.program-meta {border:solid 1px #f5f5f5; display:block; float: left; margin:20px 10px 0 0; padding:5px 5px 0 2px; font-size:0.8em; }
+div.program-meta div.program-meta{border:none; margin-top:none;margin:0; padding:0; font-size:1em; }
 div.program-meta .font-weight-bold {font-size: 0.8em;}
 div.program-link {margin-top:10px;}

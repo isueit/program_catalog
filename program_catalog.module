@@ -81,6 +81,7 @@ function program_catalog_handle_feed() {
       $mynode->body->value = $program['hed__Description__c'];
     }
     $mynode->body->format = 'basic';
+    $mynode->body->summary = $program['hed__Description__c'];
 
     // Handle Category
     $mynode->field_category = array();
@@ -116,6 +117,22 @@ function program_catalog_handle_feed() {
         $taxonomy = Term::create(['name' => $program['hed__Account__r.Name'], 'vid' => 'program_area'])->save();
       }
       $mynode->field_program_area[] = ['target_id' => $taxonomy];
+    }
+
+    // Handle Interest Areas
+    $mynode->field_interest_areas = array();
+    $interestAreas = explode(';', $program['Related_Interest_Areas__c']);
+    foreach ($interestAreas as $interestArea) {
+      $interestArea = trim($interestArea);
+      if (!empty($interestArea)) {
+        $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $interestArea, 'vid' => 'interest_areas']);
+        if (!empty($taxonomy)) {
+          $taxonomy = array_keys($taxonomy)[0];
+        } else {
+          $taxonomy = Term::create(['name' => $interestArea, 'vid' => 'interest_areas'])->save();
+        }
+        $mynode->field_interest_areas[] = ['target_id' => $taxonomy];
+      }
     }
 
     $mynode->set('field_stale', FALSE)->save();

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Interest Areas'
+vid: interest_areas
+description: ''
+weight: 0

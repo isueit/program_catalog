@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.programs.field_category
     - field.field.node.programs.field_critical_issue
     - field.field.node.programs.field_event_title_filter
+    - field.field.node.programs.field_interest_areas
     - field.field.node.programs.field_mydata_id
     - field.field.node.programs.field_program_area
     - field.field.node.programs.field_stale
@@ -37,6 +38,7 @@ hidden:
   field_category: true
   field_critical_issue: true
   field_event_title_filter: true
+  field_interest_areas: true
   field_mydata_id: true
   field_program_area: true
   field_stale: true
