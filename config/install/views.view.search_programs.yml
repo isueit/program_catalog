@@ -6,6 +6,7 @@ dependencies:
     - node.type.programs
     - taxonomy.vocabulary.category
     - taxonomy.vocabulary.critical_issue
+    - taxonomy.vocabulary.interest_areas
     - taxonomy.vocabulary.program_area
   module:
     - node
@@ -293,6 +294,53 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        field_category_target_id:
+          id: field_category_target_id
+          table: node__field_category
+          field: field_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_category_target_id_op
+            label: 'Category:'
+            description: ''
+            use_operator: false
+            operator: field_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
         field_critical_issue_target_id:
           id: field_critical_issue_target_id
           table: node__field_critical_issue
@@ -340,10 +388,10 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        field_category_target_id:
-          id: field_category_target_id
-          table: node__field_category
-          field: field_category_target_id
+        field_interest_areas_target_id:
+          id: field_interest_areas_target_id
+          table: node__field_interest_areas
+          field: field_interest_areas_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -352,14 +400,14 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_category_target_id_op
-            label: 'Category:'
+            operator_id: field_interest_areas_target_id_op
+            label: 'Interest Areas:'
             description: ''
             use_operator: false
-            operator: field_category_target_id_op
+            operator: field_interest_areas_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_category_target_id
+            identifier: field_interest_areas_target_id
             required: false
             remember: false
             multiple: false
@@ -383,7 +431,7 @@ display:
           reduce_duplicates: false
           type: select
           limit: true
-          vid: category
+          vid: interest_areas
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
