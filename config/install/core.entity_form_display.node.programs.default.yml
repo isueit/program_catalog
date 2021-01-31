@@ -4,6 +4,9 @@ dependencies:
   config:
     - field.field.node.programs.body
     - field.field.node.programs.field_category
+    - field.field.node.programs.field_contact_email
+    - field.field.node.programs.field_contact_name
+    - field.field.node.programs.field_contact_phone
     - field.field.node.programs.field_critical_issue
     - field.field.node.programs.field_event_title_filter
     - field.field.node.programs.field_interest_areas
@@ -43,6 +46,30 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_contact_email:
+    weight: 132
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_contact_name:
+    weight: 131
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_contact_phone:
+    weight: 133
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_critical_issue:
     weight: 122

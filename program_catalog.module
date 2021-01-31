@@ -83,6 +83,15 @@ function program_catalog_handle_feed() {
     $mynode->body->format = 'basic';
     $mynode->body->summary = $program['hed__Description__c'];
 
+    //Handle Contact Info
+    $mynode->field_contact_name->value = '';
+    if (!empty($program['Primary_Contact__r.FirstName'])) {
+      $mynode->field_contact_name->value = $program['Primary_Contact__r.FirstName'] . ' ';
+    }
+    $mynode->field_contact_name->value .= $program['Primary_Contact__r.LastName'];
+    $mynode->field_contact_email->value = $program['Primary_Contact__r.Email'];
+    $mynode->field_contact_phone->value = $program['Primary_Contact__r.Phone'];
+
     // Handle Category
     $mynode->field_category = array();
     if (!empty($program['Program_Category__c'])) {
