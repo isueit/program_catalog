@@ -5,3 +5,5 @@ div.program-meta .font-weight-bold {font-size: 0.8em;}
 div.program-link, div.program-contactname {margin-top:10px;}
 div.program-link a, div.program-contactemail a {text-decoration:none;}
 div.program-link a:hover, div.program-contactemail a:hover {text-decoration:underline;}
+div.program-contactname, div.program-contactemail, div.program-contactphone {margin-left:15px;}
+div.program-contactname div.font-weight-bold {margin-left:-15px; margin-top: 20px; font-weight:normal !important;}
