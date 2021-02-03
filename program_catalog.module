@@ -177,8 +177,9 @@ function program_catalog_preprocess_node(&$variables)
  */
 function program_catalog_preprocess_views_view(&$variables)
 {
-  $variables['#cache']['contexts'][] = 'route';
-  if ($variables['view_array']['#name'] == 'search_programs') {
+//  $variables['#cache']['contexts'][] = 'route';
+  if ($variables['id'] == 'search_programs' || $variables['id'] == 'programs_by_program_area') {
     $variables['#attached']['library'][] = 'program_catalog/programs-search';
+
   }
 }
