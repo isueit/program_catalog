@@ -1,18 +1,18 @@
+uuid: ad61f6c7-5156-4f19-b2a4-2dddcdd30e0f
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.body
     - node.type.programs
-    - taxonomy.vocabulary.category
-    - taxonomy.vocabulary.critical_issue
-    - taxonomy.vocabulary.interest_areas
     - taxonomy.vocabulary.program_area
   module:
     - node
     - taxonomy
     - text
     - user
+_core:
+  default_config_hash: nfQRlXn79ujzGLFDbnQulLhth3H5nV-5zdfmmw0aV3I
 id: search_programs
 label: 'Search Programs'
 module: views
@@ -52,7 +52,7 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required: ''
           text_input_required_format: wysiwyg
       pager:
         type: mini
@@ -294,147 +294,6 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        field_category_target_id:
-          id: field_category_target_id
-          table: node__field_category
-          field: field_category_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_category_target_id_op
-            label: 'Category:'
-            description: ''
-            use_operator: false
-            operator: field_category_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_category_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: category
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        field_critical_issue_target_id:
-          id: field_critical_issue_target_id
-          table: node__field_critical_issue
-          field: field_critical_issue_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_critical_issue_target_id_op
-            label: 'Critical Issue:'
-            description: ''
-            use_operator: false
-            operator: field_critical_issue_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_critical_issue_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: critical_issue
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        field_interest_areas_target_id:
-          id: field_interest_areas_target_id
-          table: node__field_interest_areas
-          field: field_interest_areas_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_interest_areas_target_id_op
-            label: 'Interest Areas:'
-            description: ''
-            use_operator: false
-            operator: field_interest_areas_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_interest_areas_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: interest_areas
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
         status:
           value: '1'
           table: node_field_data
@@ -500,6 +359,7 @@ display:
         operator: AND
         groups:
           1: AND
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -512,14 +372,13 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
-  page_1:
-    display_plugin: page
-    id: page_1
-    display_title: Page
-    position: 1
+  block_1:
+    display_plugin: block
+    id: block_1
+    display_title: Block
+    position: 2
     display_options:
       display_extenders: {  }
-      path: search-programs
     cache_metadata:
       max-age: -1
       contexts:
