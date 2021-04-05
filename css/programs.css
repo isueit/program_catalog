@@ -11,5 +11,5 @@ div.program-link a:hover {background:#cc0000; color:#ffffff;}
 div.program-meta  {font-size: 0.7em; padding-bottom:4px;} 
 div.program-meta.program-area {border-top:solid 1px #DEE2E6; margin-top:40px; padding-top:10px;}
 div.program-meta div.program-meta {font-size:1em; }
-div.program-meta div.font-weight-bold {font-size:0.95em; text-decoration:underline; color:#555; padding-bottom:1px; }
+div.program-meta div.font-weight-bold {font-size:0.95em; color:#555; padding-bottom:1px; width:100px; }
 
