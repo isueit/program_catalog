@@ -99,7 +99,7 @@ function program_catalog_handle_feed() {
       if (!empty($taxonomy)) {
         $taxonomy = array_keys($taxonomy)[0];
       } else {
-        $taxonomy = Term::create(['name' => $program['Program_Category__c'], 'vid' => 'category'])->save();
+        $taxonomy = Term::create(['name' => $program['Program_Category__c'], 'description' => $program['Id'], 'vid' => 'category'])->save();
       }
       $mynode->field_category[] = ['target_id' => $taxonomy];
     }
@@ -111,7 +111,7 @@ function program_catalog_handle_feed() {
       if (!empty($taxonomy)) {
         $taxonomy = array_keys($taxonomy)[0];
       } else {
-        $taxonomy = Term::create(['name' => $program['Critical_Issue__c'], 'vid' => 'critical_issue'])->save();
+        $taxonomy = Term::create(['name' => $program['Critical_Issue__c'], 'description' => $program['Id'], 'vid' => 'critical_issue'])->save();
       }
       $mynode->field_critical_issue[] = ['target_id' => $taxonomy];
     }
@@ -123,7 +123,7 @@ function program_catalog_handle_feed() {
       if (!empty($taxonomy)) {
         $taxonomy = array_keys($taxonomy)[0];
       } else {
-        $taxonomy = Term::create(['name' => $program['hed__Account__r.Name'], 'vid' => 'program_area'])->save();
+        $taxonomy = Term::create(['name' => $program['hed__Account__r.Name'], 'description' => $program['Id'], 'vid' => 'program_area'])->save();
       }
       $mynode->field_program_area[] = ['target_id' => $taxonomy];
     }
@@ -138,7 +138,7 @@ function program_catalog_handle_feed() {
         if (!empty($taxonomy)) {
           $taxonomy = array_keys($taxonomy)[0];
         } else {
-          $taxonomy = Term::create(['name' => $interestArea, 'vid' => 'interest_areas'])->save();
+          $taxonomy = Term::create(['name' => $interestArea, 'description' => $program['Id'], 'vid' => 'interest_areas'])->save();
         }
         $mynode->field_interest_areas[] = ['target_id' => $taxonomy];
       }
