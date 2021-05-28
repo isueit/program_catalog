@@ -95,37 +95,19 @@ function program_catalog_handle_feed() {
     // Handle Category
     $mynode->field_category = array();
     if (!empty($program['Program_Category__c'])) {
-      $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $program['Program_Category__c'], 'vid' => 'category']);
-      if (!empty($taxonomy)) {
-        $taxonomy = array_keys($taxonomy)[0];
-      } else {
-        $taxonomy = Term::create(['name' => $program['Program_Category__c'], 'description' => $program['Id'], 'vid' => 'category'])->save();
-      }
-      $mynode->field_category[] = ['target_id' => $taxonomy];
+      $mynode->field_category[] = ['target_id' => program_catalog_get_taxonomy_term($program['Program_Category__c'], $program['Id'], 'category')];
     }
 
     // Handle Critical Issue
     $mynode->field_critical_issue = array();
     if (!empty($program['Critical_Issue__c'])) {
-      $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $program['Critical_Issue__c'], 'vid' => 'critical_issue']);
-      if (!empty($taxonomy)) {
-        $taxonomy = array_keys($taxonomy)[0];
-      } else {
-        $taxonomy = Term::create(['name' => $program['Critical_Issue__c'], 'description' => $program['Id'], 'vid' => 'critical_issue'])->save();
-      }
-      $mynode->field_critical_issue[] = ['target_id' => $taxonomy];
+      $mynode->field_critical_issue[] = ['target_id' => program_catalog_get_taxonomy_term($program['Critical_Issue__c'], $program['Id'], 'critical_issue')];
     }
 
     // Handle Program Area
     $mynode->field_program_area = array();
     if (!empty($program['hed__Account__r.Name'])) {
-      $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $program['hed__Account__r.Name'], 'vid' => 'program_area']);
-      if (!empty($taxonomy)) {
-        $taxonomy = array_keys($taxonomy)[0];
-      } else {
-        $taxonomy = Term::create(['name' => $program['hed__Account__r.Name'], 'description' => $program['Id'], 'vid' => 'program_area'])->save();
-      }
-      $mynode->field_program_area[] = ['target_id' => $taxonomy];
+      $mynode->field_program_area[] = ['target_id' => program_catalog_get_taxonomy_term($program['hed__Account__r.Name'], $program['Id'], 'program_area')];
     }
 
     // Handle Interest Areas
@@ -134,13 +116,7 @@ function program_catalog_handle_feed() {
     foreach ($interestAreas as $interestArea) {
       $interestArea = trim($interestArea);
       if (!empty($interestArea)) {
-        $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $interestArea, 'vid' => 'interest_areas']);
-        if (!empty($taxonomy)) {
-          $taxonomy = array_keys($taxonomy)[0];
-        } else {
-          $taxonomy = Term::create(['name' => $interestArea, 'description' => $program['Id'], 'vid' => 'interest_areas'])->save();
-        }
-        $mynode->field_interest_areas[] = ['target_id' => $taxonomy];
+        $mynode->field_interest_areas[] = ['target_id' => program_catalog_get_taxonomy_term($interestArea, $program['Id'], 'interest_areas')];
       }
     }
 
@@ -182,4 +158,17 @@ function program_catalog_preprocess_views_view(&$variables)
     $variables['#attached']['library'][] = 'program_catalog/programs-search';
 
   }
+}
+
+/*
+ * Return ID number of taxonomy term
+ */
+function program_catalog_get_taxonomy_term($term, $mydata_id, $vid) {
+  $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $term, 'vid' => $vid]);
+  if (!empty($taxonomy)) {
+    $term_id = array_keys($taxonomy)[0];
+  } else {
+    $term_id = Term::create(['name' => $term, 'description' => $mydata_id, 'vid' => $vid])->save();
+  }
+  return $term_id;
 }
