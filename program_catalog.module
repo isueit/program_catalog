@@ -95,19 +95,19 @@ function program_catalog_handle_feed() {
     // Handle Category
     $mynode->field_category = array();
     if (!empty($program['Program_Category__c'])) {
-      $mynode->field_category[] = ['target_id' => program_catalog_get_taxonomy_term($program['Program_Category__c'], $program['Id'], 'category')];
+      $mynode->field_category[] = ['target_id' => program_catalog_get_taxonomy_term($program['Program_Category__c'], 'category')];
     }
 
     // Handle Critical Issue
     $mynode->field_critical_issue = array();
     if (!empty($program['Critical_Issue__c'])) {
-      $mynode->field_critical_issue[] = ['target_id' => program_catalog_get_taxonomy_term($program['Critical_Issue__c'], $program['Id'], 'critical_issue')];
+      $mynode->field_critical_issue[] = ['target_id' => program_catalog_get_taxonomy_term($program['Critical_Issue__c'], 'critical_issue')];
     }
 
     // Handle Program Area
     $mynode->field_program_area = array();
     if (!empty($program['hed__Account__r.Name'])) {
-      $mynode->field_program_area[] = ['target_id' => program_catalog_get_taxonomy_term($program['hed__Account__r.Name'], $program['Id'], 'program_area')];
+      $mynode->field_program_area[] = ['target_id' => program_catalog_get_taxonomy_term($program['hed__Account__r.Name'], 'program_area')];
     }
 
     // Handle Interest Areas
@@ -116,7 +116,7 @@ function program_catalog_handle_feed() {
     foreach ($interestAreas as $interestArea) {
       $interestArea = trim($interestArea);
       if (!empty($interestArea)) {
-        $mynode->field_interest_areas[] = ['target_id' => program_catalog_get_taxonomy_term($interestArea, $program['Id'], 'interest_areas')];
+        $mynode->field_interest_areas[] = ['target_id' => program_catalog_get_taxonomy_term($interestArea, 'interest_areas')];
       }
     }
 
@@ -163,12 +163,12 @@ function program_catalog_preprocess_views_view(&$variables)
 /*
  * Return ID number of taxonomy term
  */
-function program_catalog_get_taxonomy_term($name, $mydata_id, $vid) {
+function program_catalog_get_taxonomy_term($name, $vid) {
   $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $name, 'vid' => $vid]);
   if (!empty($taxonomy)) {
     $term_id = array_keys($taxonomy)[0];
   } else {
-    $term_id = Term::create(['name' => $name, 'description' => $mydata_id, 'vid' => $vid])->save();
+    $term_id = Term::create(['name' => $name, 'vid' => $vid])->save();
   }
 
   return $term_id;
