@@ -163,12 +163,13 @@ function program_catalog_preprocess_views_view(&$variables)
 /*
  * Return ID number of taxonomy term
  */
-function program_catalog_get_taxonomy_term($term, $mydata_id, $vid) {
-  $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $term, 'vid' => $vid]);
+function program_catalog_get_taxonomy_term($name, $mydata_id, $vid) {
+  $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $name, 'vid' => $vid]);
   if (!empty($taxonomy)) {
     $term_id = array_keys($taxonomy)[0];
   } else {
-    $term_id = Term::create(['name' => $term, 'description' => $mydata_id, 'vid' => $vid])->save();
+    $term_id = Term::create(['name' => $name, 'description' => $mydata_id, 'vid' => $vid])->save();
   }
+
   return $term_id;
 }
