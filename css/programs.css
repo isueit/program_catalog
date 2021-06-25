@@ -8,8 +8,10 @@ div.program-link {margin:35px 0 15px 0; }
 div.program-link a {color: #cc0000; border: 1px solid #cc0000; font-weight: 700; border-radius: 3px; cursor: pointer; transition: background 0.2s ease; padding: 7px; white-space: break-spaces; }
 div.program-link a:hover {background:#cc0000; color:#ffffff;}
 
-div.program-meta  {font-size: 0.7em; padding-bottom:4px;} 
+div.program-meta  {font-size: 0.7em; padding-bottom:4px;}
 div.program-meta.program-area {border-top:solid 1px #DEE2E6; margin-top:40px; padding-top:10px;}
 div.program-meta div.program-meta {font-size:1em; }
 div.program-meta div.font-weight-bold {font-size:0.95em; color:#555; padding-bottom:1px; width:100px; }
+img.educational_program_image {max-width: 200px; float:left; margin: 0 8px 5px 0;}
+div.clearer {clear:both;}
 

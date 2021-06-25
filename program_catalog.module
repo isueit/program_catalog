@@ -25,7 +25,7 @@ function program_catalog_handle_feed() {
   $nids = \Drupal::entityQuery('node')->condition('type', 'programs')->execute();
   $nodes =  Node::loadMultiple($nids);
 
-  $fromFeed = file_get_contents('https://datastore.exnet.iastate.edu/mydata/PlannedPrograms.json');
+  $fromFeed = file_get_contents('https://datastore.exnet.iastate.edu/mydata/EducationalPrograms.json');
   $programs = json_decode($fromFeed, TRUE);
 
   if (sizeof($programs) < 100) {
@@ -79,6 +79,9 @@ function program_catalog_handle_feed() {
       $mynode->body->value = $program['hed__Extended_Description__c'];
     } else {
       $mynode->body->value = $program['hed__Description__c'];
+    }
+    if (!empty($program['Smugmug_ID__c'])) {
+      $mynode->body->value = '<img class="educational_program_image" src="https://photos.smugmug.com/photos/' . $program['Smugmug_ID__c'] . '/0/XL/' . $program['Smugmug_ID__c'] . '-XL.jpg" alt="" />'. $mynode->body->value . '<div class="clearer"></div>';
     }
     $mynode->body->format = 'basic';
     $mynode->body->summary = $program['hed__Description__c'];
