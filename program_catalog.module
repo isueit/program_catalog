@@ -24,6 +24,7 @@ function program_catalog_handle_feed() {
   // Get all Staff Profile nodes
   $nids = \Drupal::entityQuery('node')->condition('type', 'programs')->execute();
   $nodes =  Node::loadMultiple($nids);
+  $count = 0;
 
   $fromFeed = file_get_contents('https://datastore.exnet.iastate.edu/mydata/EducationalPrograms.json');
   $programs = json_decode($fromFeed, TRUE);
@@ -42,6 +43,10 @@ function program_catalog_handle_feed() {
 
   // Handle each planned program
   foreach ($programs as $program) {
+    // Skip programs that shouldn't show in Program Catalog
+    if (empty($program['Show_on_Program_Catalog__c']) || $program['Show_on_Program_Catalog__c'] == false) {
+      continue;
+    }
     // Find the right node if it exists
     $mynode = array();
     foreach ($nodes as $node) {
@@ -126,7 +131,10 @@ function program_catalog_handle_feed() {
     $mynode->set('field_stale', FALSE)->save();
     $mynode->setPublished();
     $mynode->save();
+    $count++;
   }
+
+  \Drupal::logger('program_catalog')->info('Imported ' . $count . ' programs');
 
   // Unpublish nodes that are still marked "stale"
   foreach ($nodes as $node) {
