@@ -29,6 +29,9 @@ function program_catalog_handle_feed() {
   $fromFeed = file_get_contents('https://datastore.exnet.iastate.edu/mydata/EducationalPrograms.json');
   $programs = json_decode($fromFeed, TRUE);
 
+  // Record types to include in the catalog
+  $types = ['012460000012EiaAAE'];
+
   if (sizeof($programs) < 100) {
     \Drupal::logger('program_catalog')->info('Not enough records - exiting');
     return;
@@ -47,6 +50,9 @@ function program_catalog_handle_feed() {
     if (empty($program['Show_on_Program_Catalog__c']) || $program['Show_on_Program_Catalog__c'] == false) {
       continue;
     }
+    // Only include records of certain types
+    if (!in_array($program['RecordTypeId'], $types)) continue;
+
     // Find the right node if it exists
     $mynode = array();
     foreach ($nodes as $node) {
