@@ -6,7 +6,7 @@ dependencies:
     - node.type.programs
   module:
     - text
-id: node.program.sbody
+id: node.programs.body
 field_name: body
 entity_type: node
 bundle: programs
