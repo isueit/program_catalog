@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.programs.field_interest_areas
     - field.field.node.programs.field_mydata_id
     - field.field.node.programs.field_program_area
+    - field.field.node.programs.field_search_terms
     - field.field.node.programs.field_stale
     - field.field.node.programs.field_website
     - node.type.programs
@@ -104,6 +105,14 @@ content:
     weight: 126
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_search_terms:
+    type: string_textarea
+    weight: 134
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_stale:
     type: boolean_checkbox

@@ -96,6 +96,7 @@ function program_catalog_handle_feed() {
     }
     $mynode->body->format = 'basic';
     $mynode->body->summary = $program['hed__Description__c'];
+    $mynode->field_search_terms = $program['Search_Terms__c'];
 
     //Handle Contact Info
     $mynode->field_contact_name->value = '';

@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.programs.field_interest_areas
     - field.field.node.programs.field_mydata_id
     - field.field.node.programs.field_program_area
+    - field.field.node.programs.field_search_terms
     - field.field.node.programs.field_stale
     - field.field.node.programs.field_website
     - node.type.programs
@@ -47,5 +48,6 @@ hidden:
   field_interest_areas: true
   field_mydata_id: true
   field_program_area: true
+  field_search_terms: true
   field_stale: true
   field_website: true
