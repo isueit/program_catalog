@@ -7,15 +7,16 @@ use \Drupal\taxonomy\Entity\Term;
 * Implements hook_rebuild().
 */
 function program_catalog_rebuild() {
+  \Drupal::logger('program_catalog')->info('Starting Imports from Cache Rebuild');
   program_catalog_handle_feed();
 }
 
 /**
 * Implements hook_cron().
 */
-function program_catalog_cron() {
-  program_catalog_handle_feed();
-}
+//function program_catalog_cron() {
+  //program_catalog_handle_feed();
+//}
 
 /**
  * Pull in the feed
@@ -32,7 +33,7 @@ function program_catalog_handle_feed() {
   // Record types to include in the catalog
   $types = ['012460000012EiaAAE'];
 
-  if (sizeof($programs) < 100) {
+  if (sizeof($programs) < 200) {
     \Drupal::logger('program_catalog')->info('Not enough records - exiting');
     return;
   }
