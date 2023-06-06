@@ -97,6 +97,10 @@ function program_catalog_handle_feed() {
     }
     $mynode->body->format = 'basic';
     $mynode->body->summary = $program['hed__Description__c'];
+    if (!empty($program['Intended_Audiences__c'])) {
+      $mynode->body->value .= '<p><b>Intended Audiences:</b><br />' . str_replace(';', ', ', $program['Intended_Audiences__c']) . '</p>';
+    }
+
     $mynode->field_search_terms = $program['Search_Terms__c'];
 
     //Handle Contact Info
