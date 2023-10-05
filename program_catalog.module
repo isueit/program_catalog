@@ -1,7 +1,8 @@
 <?php
 
-use \Drupal\node\Entity\Node;
-use \Drupal\taxonomy\Entity\Term;
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\isueo_helpers\ISUEOHelpers;
 
 /**
 * Implements hook_rebuild().
@@ -27,7 +28,7 @@ function program_catalog_handle_feed() {
   $nodes =  Node::loadMultiple($nids);
   $count = 0;
 
-  $fromFeed = file_get_contents('https://datastore.exnet.iastate.edu/mydata/EducationalPrograms.json');
+  $fromFeed = ISUEOHelpers\Files::fetch_url('https://datastore.exnet.iastate.edu/mydata/EducationalPrograms.json');
   $programs = json_decode($fromFeed, TRUE);
 
   // Record types to include in the catalog

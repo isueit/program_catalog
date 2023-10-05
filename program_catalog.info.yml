@@ -7,3 +7,4 @@ package: 'ISUEO'
 dependencies:
   - pathauto:pathauto
   - drupal:link
+  - d8modules:isueo_helpers
