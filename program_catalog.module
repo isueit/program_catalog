@@ -24,7 +24,7 @@ function program_catalog_rebuild() {
  */
 function program_catalog_handle_feed() {
   // Get all Staff Profile nodes
-  $nids = \Drupal::entityQuery('node')->condition('type', 'programs')->execute();
+  $nids = \Drupal::entityQuery('node')->accessCheck(false)->condition('type', 'programs')->execute();
   $nodes =  Node::loadMultiple($nids);
   $count = 0;
 
